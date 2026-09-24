@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form</title>
+
+    <style>
+        table , tr , th , td{
+            border: 1px solid black;
+
+        }
+    </style>
+
+    <link rel="stylesheet" href="hi.css" />
+
+</head>
+
+<body>
+
+    <section style="border: 1px solid rgb(170, 170, 192);">
+        <h1 style="display: block; text-align: center; background-color: aqua;" >Google form</h1>
+
+        <form style="border: 1px solid black; padding: 2%; margin: 5%; border-radius: 2%;" >
+        <label>Pleases enter your information </label>
+        <input id="name" type="text" pattern="[A-Z a-z]{5,200}" placeholder="here write." title="Pleases write here." required >
+        <span id="error"></span>
+        <br>
+
+        <label>This is site for address</label>
+        <textarea id="addr" typr="text" minlength="5" placeholder="here write." lenght="100" wigit title="Pleases add your address here." required ></textarea>
+
+        <br>
+
+        <button class="test" type="button" onclick="writ_eall()">Submit</button><button class="test" onclick="clearForm()" type="reset" >Clear</button>
+        <br>
+        </form>
+
+        <br>
+
+        <form style="border: 1px solid black; padding: 2%; margin: 5%; margin-top: 0%; border-radius: 2%;">
+
+            <label>Enter First Number</label>
+            <input placeholder="write here." id="num1"><br>
+            <label>Enter Second Number</label><br>
+            <textarea placeholder="write here." rows="2" cols="%" id="num2"></textarea>
+            <br>
+            <button type="button" onclick="count_num()" >Submit</button>
+            <button type="reset" onclick="clearForm()" >Clear</button>
+        </form>
+
+        <p id="Noti"  style="display: block; background-color: blue; text-align: center; color: aliceblue;"></p>
+
+
+
+    </section>
+
+    <br>
+
+        <table>
+            <tr>
+                <th colspan="2">All information</th>
+            </tr>
+
+            <tr>
+                <td>Your Name: <span id="names"></span></td>
+                <td>Your Address: <span id="addrs"></span></td>
+            </tr>
+
+            <tr>
+                <td>Your First Number: <span id="fnum"></span></td>
+                <td>Your Seccond Number: <span id="snum"></span></td>
+            </tr>
+
+        </table>
+
+</body>
+
+<script>
+    var getName = new Array();
+    function writ_eall(){
+
+        let addr_js = document.getElementById("addr").value;
+        let name_js = document.getElementById("name").value;
+        let name_len = name_js.length;
+        let addr_len = addr_js.length; 
+
+        if(name_len < 5 && addr_len < 5){
+            document.getElementById("Noti").innerText = "Please enter name or address on 5 letter.";
+            document.getElementById("error").innerText = "Please enter the name 5 letter";
+        }else{
+            document.getElementById("names").innerText = name_js;
+            document.getElementById("addrs").innerText = addr_js;
+
+            getName.push(name_js);
+            getName.push(addr_js);
+
+            console.log("Data information.");
+            console.log("Name is: " + name_js);
+            console.log("Address is: " + addr_js);
+
+            for (let i = 0 ; i < getName.length ; i++){
+            console.log(getName[i]);
+            }
+
+            console.log(getName);
+
+        }
+
+    }
+
+    var getNum = new Array();
+    function count_num(){
+        let numone = Number.parseInt(document.getElementById("num1").value);
+        let numtwo = Number.parseInt(document.getElementById("num2").value);
+
+        let total = numone + numtwo;
+
+        if(numone && numtwo != isNaN){
+        document.getElementById("fnum").innerText = numone;
+        document.getElementById("snum").innerText = numtwo;
+
+        getNum.push(total);
+        console.log(getNum);
+        console.log(numone + "+" + numtwo + "=" + total);
+        }
+
+
+    }
+
+    function clearForm() {
+        document.getElementById("error").innerText = ""; 
+        document.getElementById("Noti").innerText = "";
+        getName = [];
+        console.clear();
+        document.getElementById("fnum").innerText = "";
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+#error {
+    color: red;
+    font-size: 10px;
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.test {
+    color: aquamarine;
+    background-color: blueviolet;
+    transition: 0.8s;
+}
+
+.test:hover{
+    color: rgb(255, 0, 0);
+    background-color: blanchedalmond;
+    transition:  0.8s;
+}
+
+.test:active {
+    background-color: aqua;
+}
